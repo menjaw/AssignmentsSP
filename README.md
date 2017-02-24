@@ -1,0 +1,2 @@
+# AssignmentsSP
+All SP exercises
