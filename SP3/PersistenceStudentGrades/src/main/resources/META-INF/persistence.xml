@@ -5,6 +5,7 @@
     <class>entity.Student</class>
     <class>entity.Person</class>
     <class>entity.Employee</class>
+    <class>entity.Grade</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/studentgradesystem?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="menja"/>
