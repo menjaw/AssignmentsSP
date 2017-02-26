@@ -14,4 +14,33 @@ public class Facade {
     public static void main(String[] args) {
 
     }
+
+    public static void creatUser() {
+        
+    }
+
+    public static void findUser() {
+
+    }
+
+    public static void getAllUsers() {
+
+    }
+
+    public static void createProject() {
+
+    }
+
+    public static void assignUserToProject() {
+
+    }
+
+    public static void findProject() {
+
+    }
+
+    public static void createTaskAndAssignToProject() {
+
+    }
+
 }
