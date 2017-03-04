@@ -42,22 +42,27 @@ public class ProxySolution extends HttpServlet {
         //Skaber en ny URL med det tilsendte parameter 
         URL url = new URL("http://restcountries.eu/restv1/alpha/?codes=" + getURLCode);
         System.out.println("create connection to URL");
-        
-        
+
         //Skaber en ny forbindelse til URL
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-        
+
         conn.setRequestMethod("GET");
         conn.setRequestProperty("Accept", "application/json:charset=UFT-8");
-        
-        String jsonString;
+
+        //String jsonString;
         try (Scanner scan = new Scanner(conn.getInputStream())) {
-            jsonString = null;
+            String jsonString = "Test om der findes data";
             if (scan.hasNext()) {
                 jsonString = scan.nextLine();
             }
+            scan.close();
+            //System.out.println(jsonString);
+            //Create new PrintWriter.
+            PrintWriter out = response.getWriter();
+            //Write the json object.
+            out.print(jsonString);
         }
-        System.out.println(jsonString);
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
