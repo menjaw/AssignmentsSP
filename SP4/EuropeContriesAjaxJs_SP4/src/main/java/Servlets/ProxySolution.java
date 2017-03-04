@@ -36,13 +36,20 @@ public class ProxySolution extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("application/json");
         //refererer til js filens URL efter ?
-        String getCodes = request.getParameter("codes");
-        System.out.println("get data from js page");
+        String getURLCode = request.getParameter("codes");
+        System.out.println("get parameter from js page");
 
-        URL url = new URL("http://restcountries.eu/restv1/alpha/?codes=");
+        //Skaber en ny URL med det tilsendte parameter 
+        URL url = new URL("http://restcountries.eu/restv1/alpha/?codes=" + getURLCode);
+        System.out.println("create connection to URL");
+        
+        
+        //Skaber en ny forbindelse til URL
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-        conn.setRequestMethod(getCodes);
+        
+        conn.setRequestMethod("GET");
         conn.setRequestProperty("Accept", "application/json:charset=UFT-8");
+        
         String jsonString;
         try (Scanner scan = new Scanner(conn.getInputStream())) {
             jsonString = null;
