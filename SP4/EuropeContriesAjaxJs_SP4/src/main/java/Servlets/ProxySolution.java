@@ -7,6 +7,9 @@ package Servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.Scanner;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -34,9 +37,20 @@ public class ProxySolution extends HttpServlet {
         response.setContentType("application/json");
         //refererer til js filens URL efter ?
         String getCodes = request.getParameter("codes");
-        
-        
-        
+        System.out.println("get data from js page");
+
+        URL url = new URL("http://restcountries.eu/restv1/alpha/?codes=");
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        conn.setRequestMethod(getCodes);
+        conn.setRequestProperty("Accept", "application/json:charset=UFT-8");
+        String jsonString;
+        try (Scanner scan = new Scanner(conn.getInputStream())) {
+            jsonString = null;
+            if (scan.hasNext()) {
+                jsonString = scan.nextLine();
+            }
+        }
+        System.out.println(jsonString);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
